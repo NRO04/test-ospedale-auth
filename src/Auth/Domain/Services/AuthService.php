@@ -2,7 +2,10 @@
 
 namespace Ospedale\Auth\Domain\Services;
 
-class AuthService
+use Illuminate\Contracts\Auth\Authenticatable;
+use Ospedale\Auth\Domain\Repository\AuthRepository;
+
+class AuthService implements AuthRepository
 {
     protected $auth;
 
