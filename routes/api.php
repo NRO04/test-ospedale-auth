@@ -20,9 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(
-    ['prefix' => 'auth']
+    ['prefix' => 'auth', 'middleware' => 'api']
     , function () {
     Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout'])->middleware('jtw-Auth');
-    Route::post('me', [AuthController::class, 'me'])->middleware('jtw-Auth');
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt-Auth');
+    Route::post('me', [AuthController::class, 'me'])->middleware('jwt-Auth');
 });

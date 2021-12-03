@@ -25,12 +25,12 @@ class JwtMiddleware
     {
 
         try {
-            JWTAuth::parseToken();
+            JWTAuth::parseToken()->authenticate();
         } catch (\Exception $e) {
-            return response()->json([
-                    'status' => self::EXCEPTIONS[$this->getClassName($e)],
-                    'code' => $e->getCode(),
-                ] ?? "Authentication Error, Token is not found.");
+            return response()->json(
+                [
+                    "status" => self::EXCEPTIONS[$this->getClassName($e)] ?? "Authentication Error, Token is not found."
+                ]);
         }
 
         return $next($request);

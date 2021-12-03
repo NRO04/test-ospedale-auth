@@ -24,6 +24,8 @@ class User extends Authenticatable implements JWTSubject
         'password',
     ];
 
+    protected $table = 'tb_users';
+
 
     public function getJWTIdentifier()
     {

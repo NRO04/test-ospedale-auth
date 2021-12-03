@@ -11,7 +11,7 @@ class AuthService implements AuthRepository
 
     public function __construct()
     {
-        $this->auth = auth();
+        $this->auth = auth('api');
     }
 
     public function logout(): bool

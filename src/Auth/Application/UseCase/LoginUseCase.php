@@ -21,13 +21,12 @@ class LoginUseCase
     function execute(DTO $DTO)
     {
         $token = $this->authRepository->login($DTO->get("CREDENTIALS"));
-        $use_info = $this->usesCases["UserInfoUseCase"]->execute();
-        $DTO->set([[
+        $user_info = $this->usesCases["UserInfoUseCase"]->execute()->toArray();
+
+        $DTO->set([
             "token" => $token,
-            "use_info" => $use_info
-        ]]);
+            "user_info" => $user_info
+        ]);
         return AuthEntity::fromArray($DTO)->getSessionWithToken();
     }
-
-
 }

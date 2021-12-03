@@ -42,7 +42,7 @@ class AuthController extends Controller
         } catch (\Exception $exception) {
             $data = $exception->getMessage();
         }
-        return response()->json($data);
+        return response()->json(["status" => "OK", "data" => $data]);
     }
 
     public function logout()
